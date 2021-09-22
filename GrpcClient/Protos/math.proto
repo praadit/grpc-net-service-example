@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcClient";
+
+package math;
+
+// The greeting service definition.
+service Math {
+  // Sends a greeting
+  rpc Addition (MathRequest) returns (MathReply);
+}
+
+// The request message containing the user's name.
+message MathRequest {
+  int32 number1 = 1;
+  int32 number2 = 2;
+}
+
+// The response message containing the greetings.
+message MathReply {
+  int32 summary = 1;
+}
