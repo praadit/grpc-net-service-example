@@ -1,0 +1,12 @@
+D:\Projects\dotnet\GrpcServices\grpccontracts\obj\Debug\net5.0\GrpcContracts.csproj.AssemblyReference.cache
+D:\Projects\dotnet\GrpcServices\grpccontracts\obj\Debug\net5.0\GrpcContracts.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\dotnet\GrpcServices\grpccontracts\obj\Debug\net5.0\GrpcContracts.AssemblyInfoInputs.cache
+D:\Projects\dotnet\GrpcServices\grpccontracts\obj\Debug\net5.0\GrpcContracts.AssemblyInfo.cs
+D:\Projects\dotnet\GrpcServices\grpccontracts\obj\Debug\net5.0\GrpcContracts.csproj.CoreCompileInputs.cache
+D:\Projects\dotnet\GrpcServices\grpccontracts\bin\Debug\net5.0\GrpcContracts.deps.json
+D:\Projects\dotnet\GrpcServices\grpccontracts\bin\Debug\net5.0\GrpcContracts.dll
+D:\Projects\dotnet\GrpcServices\grpccontracts\bin\Debug\net5.0\ref\GrpcContracts.dll
+D:\Projects\dotnet\GrpcServices\grpccontracts\bin\Debug\net5.0\GrpcContracts.pdb
+D:\Projects\dotnet\GrpcServices\grpccontracts\obj\Debug\net5.0\GrpcContracts.dll
+D:\Projects\dotnet\GrpcServices\grpccontracts\obj\Debug\net5.0\ref\GrpcContracts.dll
+D:\Projects\dotnet\GrpcServices\grpccontracts\obj\Debug\net5.0\GrpcContracts.pdb

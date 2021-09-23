@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using GrpcContracts.Services.Interfaces;
+using ProtoBuf.Grpc.Server;
 
 namespace GrpcServer
 {
@@ -16,6 +18,8 @@ namespace GrpcServer
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCodeFirstGrpc();
+            services.AddTransient<ILoginService, LoginService>();
             services.AddGrpc();
         }
 
@@ -35,6 +39,7 @@ namespace GrpcServer
                 endpoints.MapGrpcService<GreeterService>();
                 endpoints.MapGrpcService<MathService>();
                 endpoints.MapGrpcService<ChatServices>();
+                endpoints.MapGrpcService<LoginService>();
 
                 endpoints.MapGet("/", async context =>
                 {

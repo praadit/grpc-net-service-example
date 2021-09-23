@@ -1,21 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Protobuf Include="Protos\greet.proto" GrpcServices="Client" />
-    <Protobuf Include="Protos\math.proto" GrpcServices="Client" />
-    <Protobuf Include="Protos\chat.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\greet.proto" GrpcServices="Client"/>
+    <Protobuf Include="Protos\math.proto" GrpcServices="Client"/>
+    <Protobuf Include="Protos\chat.proto" GrpcServices="Client"/>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.18.0" />
-    <PackageReference Include="Grpc.Net.Client" Version="2.39.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.18.0"/>
+    <PackageReference Include="Grpc.Net.Client" Version="2.39.0"/>
     <PackageReference Include="Grpc.Tools" Version="2.40.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="protobuf-net" Version="3.0.101"/>
+    <PackageReference Include="protobuf-net.Grpc" Version="1.0.152"/>
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.8.1"/>
+    <PackageReference Include="System.ServiceModel.Http" Version="4.8.1"/>
   </ItemGroup>
-
+  <ItemGroup>
+    <ProjectReference Include="..\GrpcContracts\GrpcContracts.csproj" />
+  </ItemGroup>
 </Project>

@@ -4,6 +4,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
 using Grpc.Core;
+using ProtoBuf.Grpc.Client;
+using GrpcContracts.Services.Interfaces;
+using GrpcContracts.Messages.Request;
 
 namespace GrpcClient
 {
@@ -14,10 +17,11 @@ namespace GrpcClient
             Program program = new Program();
             using var channel = GrpcChannel.ForAddress("https://localhost:6001");
             
-            await program.AsyncUnaryCall(channel);
-            await program.AsyncServerStreamingCall(channel);
-            await program.AsyncClientStreamCall(channel);
-            await program.AsyncChatService(channel);
+            // await program.AsyncUnaryCall(channel);
+            // await program.AsyncServerStreamingCall(channel);
+            // await program.AsyncClientStreamCall(channel);
+            // await program.AsyncChatService(channel);
+            await program.ProtobufIntegration(channel);
         }
 
         public async Task AsyncUnaryCall(GrpcChannel channel){
@@ -94,6 +98,14 @@ namespace GrpcClient
             }catch(RpcException e) when (e.Status.StatusCode == StatusCode.Cancelled){                
                 Console.WriteLine("Client Request cancelation");
             }
+        }
+        
+        public async Task ProtobufIntegration(GrpcChannel channel){
+            var client = channel.CreateGrpcService<ILoginService>();
+
+            var reply = await client.Login(new LoginRequest { Token = "ajhsdkahwdhashdkawd" });
+
+            Console.WriteLine($"GameToken : {reply.LoginData.GameToken}");
         }
     }
 }
