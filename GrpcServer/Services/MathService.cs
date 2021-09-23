@@ -27,5 +27,23 @@ namespace GrpcServer
                 await Task.Delay(1000);
             }
         }
+
+        public override async Task<SummaryResponse> SummaryStream(IAsyncStreamReader<SummaryRequest> requestStream, ServerCallContext context){
+            int start = 1;
+            var temp = start;
+            var response = new SummaryResponse{
+                Summary = {}
+            };
+            await foreach(var request in requestStream.ReadAllAsync()){
+                temp += request.Addition;
+                response.Summary.Add(new SummaryData{
+                    Addition = request.Addition,
+                    Result = temp,
+                    Start = temp - request.Addition
+                });
+            }
+
+            return response;
+        }
     }
 }

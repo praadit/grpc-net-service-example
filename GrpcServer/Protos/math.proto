@@ -9,6 +9,7 @@ service Math {
   // Sends a greeting
   rpc Addition (MathRequest) returns (MathReply);
   rpc Increment (IncrementRequest) returns (stream IncrementResponse);
+  rpc SummaryStream (stream SummaryRequest) returns (SummaryResponse);
 }
 
 // The request message containing the user's name.
@@ -29,4 +30,18 @@ message IncrementRequest{
 
 message IncrementResponse{
   int32 result = 1;
+}
+
+message SummaryRequest{
+  int32 addition = 1;
+}
+
+message SummaryResponse{
+  repeated SummaryData summary = 1;
+}
+
+message SummaryData{
+  int32 result = 1;
+  int32 start = 2;
+  int32 addition = 3;
 }
