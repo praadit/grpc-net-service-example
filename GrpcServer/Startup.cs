@@ -28,11 +28,13 @@ namespace GrpcServer
             }
 
             app.UseRouting();
+            app.UseGrpcWeb();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGrpcService<GreeterService>();
                 endpoints.MapGrpcService<MathService>();
+                endpoints.MapGrpcService<ChatServices>();
 
                 endpoints.MapGet("/", async context =>
                 {

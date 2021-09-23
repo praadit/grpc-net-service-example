@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Threading;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
@@ -16,6 +17,7 @@ namespace GrpcClient
             await program.AsyncUnaryCall(channel);
             await program.AsyncServerStreamingCall(channel);
             await program.AsyncClientStreamCall(channel);
+            await program.AsyncChatService(channel);
         }
 
         public async Task AsyncUnaryCall(GrpcChannel channel){
@@ -58,6 +60,39 @@ namespace GrpcClient
             var res = await clientStreamCall;
             foreach(var result in res.Summary){
                 Console.WriteLine(result.Result);
+            }
+        }
+
+        public async Task AsyncChatService(GrpcChannel channel){
+            var client = new Chat.ChatClient(channel);
+            using var call = client.SendMessage();
+
+            var tokenResource = new CancellationTokenSource();
+            
+            var readTask = Task.Run(async () => {
+                await foreach(var response in call.ResponseStream.ReadAllAsync(tokenResource.Token)){
+                    Console.WriteLine(response.Message);
+                }
+            });
+
+            while (true)
+            {
+                var result = Console.ReadLine();
+                if (string.IsNullOrEmpty(result))
+                {
+                    tokenResource.Cancel();
+                    break;
+                }
+
+                await call.RequestStream.WriteAsync(new Client2Server { Message = result });
+            }
+
+            Console.WriteLine("Disconnecting");
+            await call.RequestStream.CompleteAsync();
+            try{
+                await readTask;
+            }catch(RpcException e) when (e.Status.StatusCode == StatusCode.Cancelled){                
+                Console.WriteLine("Client Request cancelation");
             }
         }
     }
