@@ -17,10 +17,10 @@ namespace GrpcClient
             Program program = new Program();
             using var channel = GrpcChannel.ForAddress("https://localhost:6001");
             
-            // await program.AsyncUnaryCall(channel);
-            // await program.AsyncServerStreamingCall(channel);
-            // await program.AsyncClientStreamCall(channel);
-            // await program.AsyncChatService(channel);
+            await program.AsyncUnaryCall(channel);
+            await program.AsyncServerStreamingCall(channel);
+            await program.AsyncClientStreamCall(channel);
+            await program.AsyncChatService(channel);
             await program.ProtobufIntegration(channel);
         }
 

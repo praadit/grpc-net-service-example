@@ -12,8 +12,6 @@
     <PackageReference Include="Grpc.AspNetCore.Web" Version="2.39.0"/>
     <PackageReference Include="protobuf-net" Version="3.0.101"/>
     <PackageReference Include="protobuf-net.Grpc" Version="1.0.152"/>
-    <PackageReference Include="System.ServiceModel.Primitives" Version="4.8.1"/>
-    <PackageReference Include="System.ServiceModel.Http" Version="4.8.1"/>
     <PackageReference Include="protobuf-net.Grpc.AspNetCore" Version="1.0.152"/>
   </ItemGroup>
   <ItemGroup>

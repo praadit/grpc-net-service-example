@@ -2,3 +2,5 @@ GrpcClient/bin
 GrpcClient/obj
 GrpcServer/bin
 GrpcServer/obj
+GrpcContracts/bin
+GrpcContracts/obj
